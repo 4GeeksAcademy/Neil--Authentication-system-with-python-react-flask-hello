@@ -43,13 +43,13 @@ def handle_login():
 
 
 
-@api.route('/get-user', methods=['Get'])
+@api.route('/private', methods=['Get'])
 @jwt_required()
 def get_user():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-   
-    return jsonify(email=user.email, name=user.name)
+    user_email = get_jwt_identity()
+    user = User.query.filter_by(email=user_email).first()
+    
+    return jsonify(user=user.serialize()), 200
     
 
     

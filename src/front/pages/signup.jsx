@@ -30,7 +30,7 @@ export const Signup = () => {
                     onChange={(e) => setUser({ ...user, password: e.target.value })}
                 </div>
             </div>
-            <button className="btn btn-primary">Submit</button>
+            <button className="btn btn-primary" onClick={() => handleSignup()}>Submit</button>
         </div>
     );
 };

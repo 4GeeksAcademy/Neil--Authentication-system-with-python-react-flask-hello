@@ -22,4 +22,25 @@ export const login = async (dispatch, payload) => {
     }),
   });
   let data = await response.json();
+
+  dispatch({
+    type: "set_user",
+    payload: { user: data.user, access_token: data.access_token },
+  });
 };
+
+
+
+export const getUser = async (dispatch, payload) => {
+  let response = await fetch(import.meta.env.VITE_BACKEND_URL + "/private", {
+    method: "Get",
+    headers: { "Authorization": "Bearer" + ppayload },
+  }
+  );
+  let data = await response.json();
+
+  dispatch({
+    type: "set_user",
+    payload: { user: data.user, access_token: payload },
+  });
+}
